@@ -1,7 +1,7 @@
 export default function Navbar({ setView }) {
 	return (
-		<nav className="flex h-[75px] bg-red-200">
-			<div className="w-[60%] flex justify-center items-center">
+		<nav className="flex h-[75px]">
+			<div className="w-[60%] flex pl-4 items-center">
 				<input className="w-[90%] h-[60%] border-2 p-2" placeholder="Search for a drink..." />
 			</div>
 			<div className="w-[40%] flex justify-around items-center ">

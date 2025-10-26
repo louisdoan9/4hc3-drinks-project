@@ -1,6 +1,6 @@
 export default function Filter() {
 	return (
-		<div className="bg-purple-200 h-[75px] items-center flex p-2">
+		<div className="items-center flex pl-4">
 			<select className="w-[175px] min-h-[30px] h-[60%] border-2" value="filter" defaultValue={'filter'}>
 				<option className="hidden" value="filter">
 					Filter

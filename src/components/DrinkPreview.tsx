@@ -2,8 +2,8 @@ import { Dialog } from '@/components/retroui/Dialog';
 
 export default function DrinkPreview() {
 	return (
-		<div className="flex flex-col bg-red-200 w-full h-full justify-around">
-			<div className="flex bg-yellow-200 h-[30%] justify-center items-center">
+		<div className="flex flex-col bg-gray-200 w-full h-full justify-around ">
+			<div className="flex bg-gray-200 h-[30%] justify-center items-center">
 				<h2 className="w-[80%] text-3xl text-center">Drink Name</h2>
 				<Dialog>
 					<Dialog.Trigger asChild>
@@ -38,8 +38,8 @@ export default function DrinkPreview() {
 					</Dialog.Content>
 				</Dialog>
 			</div>
-			<div className="flex h-[40%] bg-purple-200">
-				<div className="w-full m-4 flex justify-center items-center bg-gray-200">Drink Image</div>
+			<div className="flex h-[40%] bg-gray-200">
+				<div className="w-full m-4 flex justify-center items-center bg-gray-300">Drink Image</div>
 				<div className="w-full flex justify-center items-center">
 					<ul>
 						<li>- Style</li>
@@ -49,7 +49,7 @@ export default function DrinkPreview() {
 					</ul>
 				</div>
 			</div>
-			<div className="flex h-[30%] bg-green-200">
+			<div className="flex h-[30%] bg-gray-200">
 				<div className="w-full flex flex-col items-center justify-center">
 					<h3>Ingredients</h3>
 					<ul>

@@ -3,7 +3,7 @@ import { Dialog } from './retroui/Dialog';
 export default function MyBar({ setView }) {
 	return (
 		<>
-			<nav className="flex h-[75px] bg-red-200">
+			<nav className="flex h-[75px]">
 				<div className="w-[60%] flex justify-around items-center ">
 					<button className="border-2 mr-auto ml-2 p-2" onClick={() => setView('home')}>
 						Home
@@ -11,8 +11,8 @@ export default function MyBar({ setView }) {
 				</div>
 			</nav>
 
-			<section className="h-full flex flex-col bg-yellow-200">
-				<div className="flex flex-col min-h-0 bg-pink-200 h-full p-4">
+			<section className="h-full flex flex-col">
+				<div className="flex flex-col min-h-0 h-full p-4">
 					<h2 className="text-2xl">Drinks</h2>
 					<div className="flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
 						{Array.from({ length: 4 }).map(() => (
@@ -30,7 +30,7 @@ export default function MyBar({ setView }) {
 						))}
 					</div>
 				</div>
-				<div className="flex flex-col min-h-0 bg-green-200 h-full p-4">
+				<div className="flex flex-col min-h-0 h-full p-4">
 					<h2 className="text-2xl">Ingredients</h2>
 					<div className="flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
 						{Array.from({ length: 6 }).map(() => (
@@ -51,7 +51,7 @@ export default function MyBar({ setView }) {
 			</section>
 			<Dialog>
 				<Dialog.Trigger asChild>
-					<button className="text-2xl text-center">Add Item</button>
+					<button className="text-2xl text-center shadow-2xl bg-gray-200">Add Item</button>
 				</Dialog.Trigger>
 				<Dialog.Content>
 					<div className="h-[80vh] w-[40vw] bg-white flex flex-col p-4 gap-8">
