@@ -7,19 +7,22 @@ import MyBar from './components/MyBar';
 
 function App() {
 	const [view, setView] = useState('home');
+	const [selectedDrink, setSelectedDrink] = useState();
+	const [textFilter, setTextFilter] = useState('');
+	const [tagFilters, setTagFilters] = useState([]);
 
 	return view === 'home' ? (
 		<main className="flex flex-col h-full">
-			<Navbar setView={setView} />
+			<Navbar setView={setView} setTextFilter={setTextFilter} />
 
 			<section className="h-full flex overflow-y-auto">
 				<div className="flex flex-col w-[60%]">
-					<Filter />
+					<Filter setTagFilters={setTagFilters} tagFilters={tagFilters} />
 
-					<DrinksList />
+					<DrinksList setSelectedDrink={setSelectedDrink} textFilter={textFilter} tagFilters={tagFilters} />
 				</div>
 				<div className="w-[40%] p-4 mt-[30px]">
-					<DrinkPreview />
+					<DrinkPreview selectedDrink={selectedDrink} />
 				</div>
 			</section>
 		</main>
