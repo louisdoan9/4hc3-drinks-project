@@ -5,7 +5,7 @@ import { type Drink } from '@/data';
 import { Card } from './retroui/Card';
 import { MaximizeIcon } from 'lucide-react';
 
-export default function DrinkPreview({ selectedDrink }) {
+export default function DrinkPreview({ selectedDrink }: { selectedDrink: number | undefined }) {
 	const [drinkData, setDrinkData] = useState<Drink>();
 
 	useEffect(() => {

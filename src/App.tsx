@@ -7,9 +7,9 @@ import MyBar from './components/MyBar';
 
 function App() {
 	const [view, setView] = useState('home');
-	const [selectedDrink, setSelectedDrink] = useState();
+	const [selectedDrink, setSelectedDrink] = useState<number | undefined>();
 	const [textFilter, setTextFilter] = useState('');
-	const [tagFilters, setTagFilters] = useState([]);
+	const [tagFilters, setTagFilters] = useState<string[]>([]);
 
 	return view === 'home' ? (
 		<main className="flex flex-col h-full">

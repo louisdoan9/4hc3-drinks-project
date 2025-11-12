@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 import MyBarAdd from './MyBarAdd';
 import { Button } from './retroui/Button';
 import { Card } from './retroui/Card';
 import { Dialog } from './retroui/Dialog';
 import { Input } from './retroui/Input';
 
-export default function MyBar({ setView }) {
+type item = { type: string; item: string; amount: string };
+
+export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<string>> }) {
 	const [amount, setAmount] = useState<string>();
 	const [x, setX] = useState(0);
 
-	function getImages(item) {
+	function getImages(item: string) {
 		if (item === 'Vodka') {
 			return 'https://www.saq.com/media/catalog/product/1/1/110056-1_1642110633.png?optimize=high&fit=bounds&height=&width=&format=jpeg';
 		} else if (item === 'Tequila') {
@@ -44,7 +46,7 @@ export default function MyBar({ setView }) {
 					<h2 className="text-2xl">Drinks</h2>
 					<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
 						{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
-							(item) =>
+							(item: item) =>
 								item.type === 'drink' && (
 									<Card className="h-full max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
 										<div className="flex justify-center border-b-2 px-2">
@@ -81,10 +83,10 @@ export default function MyBar({ setView }) {
 																			if (localStorage.getItem('items')) {
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
-																					...items.filter((x) => x.item === item.item)[0],
+																					...items.filter((x: item) => x.item === item.item)[0],
 																					amount: amount,
 																				};
-																				const updatedList = items.map((item) => {
+																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
 																						return updatedItem;
 																					}
@@ -123,7 +125,7 @@ export default function MyBar({ setView }) {
 					<h2 className="text-2xl">Ingredients</h2>
 					<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
 						{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
-							(item) =>
+							(item: item) =>
 								item.type === 'ingredient' && (
 									<Card className="max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
 										<div className="flex justify-center border-b-2 px-2">
@@ -160,10 +162,10 @@ export default function MyBar({ setView }) {
 																			if (localStorage.getItem('items')) {
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
-																					...items.filter((x) => x.item === item.item)[0],
+																					...items.filter((x: item) => x.item === item.item)[0],
 																					amount: amount,
 																				};
-																				const updatedList = items.map((item) => {
+																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
 																						return updatedItem;
 																					}

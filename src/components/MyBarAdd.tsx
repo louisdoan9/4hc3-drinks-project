@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { Button } from './retroui/Button';
 import { Card } from './retroui/Card';
 import { Dialog } from './retroui/Dialog';
@@ -6,7 +6,9 @@ import { Input } from './retroui/Input';
 import { Select } from './retroui/Select';
 import { ingredients, liquors } from '@/data';
 
-export default function MyBarAdd({ x, setX }) {
+type item = { type: string; item: string; amount: string };
+
+export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetStateAction<number>> }) {
 	const [type, setType] = useState<string>();
 	const [selected, setSelected] = useState<string>();
 	const [amount, setAmount] = useState<string>();
@@ -72,7 +74,7 @@ export default function MyBarAdd({ x, setX }) {
 													{liquors.map(
 														(liquor) =>
 															JSON.parse(localStorage.getItem('items') ?? '[]').filter(
-																(x) => x.item === liquor
+																(x: item) => x.item === liquor
 															).length === 0 && (
 																<Select.Item className="hover:cursor-pointer" value={liquor}>
 																	{liquor}
@@ -86,7 +88,7 @@ export default function MyBarAdd({ x, setX }) {
 													{ingredients.map(
 														(ingredient) =>
 															JSON.parse(localStorage.getItem('items') ?? '[]').filter(
-																(x) => x.item === ingredient
+																(x: item) => x.item === ingredient
 															).length === 0 && (
 																<Select.Item className="hover:cursor-pointer" value={ingredient}>
 																	{ingredient}

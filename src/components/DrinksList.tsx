@@ -1,7 +1,16 @@
 import { drinksData } from '@/data';
 import { Card } from './retroui/Card';
+import type { Dispatch, SetStateAction } from 'react';
 
-export default function DrinksList({ setSelectedDrink, textFilter, tagFilters }) {
+export default function DrinksList({
+	setSelectedDrink,
+	textFilter,
+	tagFilters,
+}: {
+	setSelectedDrink: Dispatch<SetStateAction<number | undefined>>;
+	textFilter: string;
+	tagFilters: string[];
+}) {
 	return (
 		<div className="overflow-y-auto p-4" dir="rtl">
 			<div className="flex gap-8 flex-wrap min-h-0" dir="ltr">

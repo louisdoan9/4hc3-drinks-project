@@ -1,7 +1,14 @@
 import { Input } from './retroui/Input';
 import { Button } from './retroui/Button';
+import type { Dispatch, SetStateAction } from 'react';
 
-export default function Navbar({ setView, setTextFilter }) {
+export default function Navbar({
+	setView,
+	setTextFilter,
+}: {
+	setView: Dispatch<SetStateAction<string>>;
+	setTextFilter: Dispatch<SetStateAction<string>>;
+}) {
 	return (
 		<nav className="flex h-[75px]">
 			<div className="w-[60%] flex px-4 items-center">

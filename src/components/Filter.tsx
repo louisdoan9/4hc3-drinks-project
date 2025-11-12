@@ -1,8 +1,15 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { Button } from './retroui/Button';
 import { Select } from './retroui/Select';
 
-export default function Filter({ setTagFilters, tagFilters }) {
-	function addToFilter(value) {
+export default function Filter({
+	setTagFilters,
+	tagFilters,
+}: {
+	setTagFilters: Dispatch<SetStateAction<string[]>>;
+	tagFilters: string[];
+}) {
+	function addToFilter(value: string) {
 		if (!tagFilters.includes(value)) {
 			setTagFilters([...tagFilters, value]);
 		}
