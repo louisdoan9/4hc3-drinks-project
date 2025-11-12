@@ -31,9 +31,9 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 					Add Item
 				</Button>
 			</Dialog.Trigger>
-			<Dialog.Content className="rounded-xl my-4 overflow-auto">
-				<Card className="h-full w-[80vw] bg-white flex flex-col gap-8">
-					<Card.Content className="p-4 flex flex-col h-full gap-6">
+			<Dialog.Content className="rounded-xl overflow-auto">
+				<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[400px] overflow-y-auto bg-white flex flex-col gap-8">
+					<Card.Content className="flex flex-col h-full gap-6">
 						<div className="flex flex-col gap-2">
 							<h2 className="text-2xl">Type</h2>
 							<div className="flex justify-around">
@@ -119,7 +119,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 						)}
 
 						{type && (
-							<div className="flex justify-around">
+							<div className="flex justify-around pb-4">
 								<Dialog.Trigger>
 									<Button variant={'outline'} className="bg-red-400 p-2 px-4">
 										Cancel

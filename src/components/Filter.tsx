@@ -16,7 +16,7 @@ export default function Filter({
 	}
 
 	return (
-		<div className="flex px-4 min-w-0 flex-1">
+		<div className="flex px-4 min-w-0">
 			<Select onValueChange={(e) => addToFilter(e)} value="filter" defaultValue={'filter'}>
 				<Select.Trigger className="mb-3 rounded-lg">
 					<Select.Value>Filter</Select.Value>
@@ -52,7 +52,7 @@ export default function Filter({
 				<div className="flex px-4 gap-2 flex-1 min-w-0">
 					{tagFilters.map((tag) => (
 						<Button
-							className="hover:bg-red-400"
+							className="hover:bg-red-400 px-4"
 							onClick={() => setTagFilters([...tagFilters].filter((e) => e !== tag))}
 						>
 							{tag}

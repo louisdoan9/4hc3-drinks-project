@@ -57,10 +57,10 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 														Edit
 													</Button>
 												</Dialog.Trigger>
-												<Dialog.Content className="rounded-xl h-fit w-[80%] overflow-auto">
-													<Card className="h-fit w-[80vw] bg-white flex flex-col gap-8">
-														<Card.Content className="p-4 flex flex-col h-full gap-6">
-															<div className="flex flex-col mt-auto">
+												<Dialog.Content className="rounded-xl overflow-auto">
+													<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
+														<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
+															<div className="flex flex-col">
 																<h2 className="text-2xl">Amount(mL)</h2>
 																<div className="flex gap-5">
 																	<Input
@@ -70,7 +70,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																	/>
 																</div>
 															</div>
-															<div className="flex justify-around">
+															<div className="flex justify-around gap-4">
 																<Dialog.Trigger>
 																	<Button variant={'outline'} className="bg-red-400 p-2 px-4">
 																		Cancel
@@ -136,9 +136,9 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 														Edit
 													</Button>
 												</Dialog.Trigger>
-												<Dialog.Content>
-													<Card className="h-fit w-[40vw] bg-white flex flex-col gap-8">
-														<Card.Content className="p-4 flex flex-col h-full gap-6">
+												<Dialog.Content className="rounded-xl overflow-auto">
+													<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
+														<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
 															<div className="flex flex-col mt-auto">
 																<h2 className="text-2xl">Amount(mL)</h2>
 																<div className="flex gap-5">
@@ -149,7 +149,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																	/>
 																</div>
 															</div>
-															<div className="flex justify-around">
+															<div className="flex justify-around gap-4">
 																<Dialog.Trigger>
 																	<Button variant={'outline'} className="bg-red-400 p-2 px-4">
 																		Cancel

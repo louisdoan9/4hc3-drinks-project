@@ -14,9 +14,9 @@ function App() {
 
 	return view === 'home' ? (
 		<main className="flex flex-col h-full">
-			<section className="h-full flex overflow-y-auto max-[700px]:flex-col-reverse">
-				<div className="flex flex-col bg-gray-50 min-w-0">
-					<div className="w-full flex items-center bg-gray-50 p-4">
+			<section className="h-full flex overflow-y-auto max-[500px]:flex-col-reverse">
+				<div className="w-full min-w-0 flex flex-col bg-gray-50">
+					<div className="flex items-center bg-gray-50 p-4">
 						<Input
 							onChange={(e) => setTextFilter(e.target.value)}
 							className="w-[90%] h-10 border-2 p-2 rounded-lg"
@@ -27,8 +27,8 @@ function App() {
 
 					<DrinksList setSelectedDrink={setSelectedDrink} textFilter={textFilter} tagFilters={tagFilters} />
 				</div>
-				<div className="w-full p-4 flex justify-center items-center flex-col gap-4">
-					<div className="w-full flex justify-between px-4 items-center gap-4 mb-auto">
+				<div className="w-[80%] p-4 flex justify-center items-center flex-col gap-4 max-[650px]:w-full">
+					<div className="flex px-0 gap-2 mb-auto w-full justify-around items-center">
 						<Button className="border-2 p-2">Hi, User</Button>
 						<Button className="border-2 p-2" onClick={() => setView('myBar')}>
 							My Bar

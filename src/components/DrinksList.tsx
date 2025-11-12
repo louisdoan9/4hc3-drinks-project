@@ -1,6 +1,7 @@
 import { drinksData } from '@/data';
 import { Card } from './retroui/Card';
 import type { Dispatch, SetStateAction } from 'react';
+import { type Drink } from '@/data';
 
 export default function DrinksList({
 	setSelectedDrink,
@@ -11,15 +12,19 @@ export default function DrinksList({
 	textFilter: string;
 	tagFilters: string[];
 }) {
+	function filterDrinks(drink: Drink) {
+		if (!tagFilters || tagFilters.length === 0) return true;
+
+		return tagFilters.every((tag) => drink.liquor === tag || drink.flavour === tag);
+	}
+
 	return (
 		<div className="overflow-y-auto p-4 w-full" dir="rtl">
 			<div className="flex gap-8 flex-wrap min-h-0" dir="ltr">
 				{drinksData.map(
 					(drink) =>
 						drink.name.toLowerCase().includes(textFilter.toLowerCase()) &&
-						(tagFilters.length === 0 ||
-							tagFilters.includes(drink.liquor) ||
-							tagFilters.includes(drink.flavour)) && (
+						filterDrinks(drink) && (
 							<Card
 								onClick={() => setSelectedDrink(drink.id)}
 								className="h-[250px] w-[30%] min-w-[150px] relative flex flex-col items-center hover:cursor-pointer overflow-hidden"

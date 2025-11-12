@@ -21,13 +21,13 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 	}
 
 	return (
-		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-h-[400px] max-[500px]:min-w-0 max-[500px]:max-h-[700px]">
-			<Card.Content className="flex h-full p-0 max-[500px]:flex-col">
-				<div className="flex flex-[0.8] min-w-0 min-h-0 flex-col border-r-2 h-full p-4">
+		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-h-[400px] max-[650px]:min-w-0 max-[500px]:max-h-[650px]">
+			<Card.Content className="flex p-0 flex-1 max-[650px]:flex-col">
+				<div className="flex flex-1 min-w-0 min-h-0 flex-col border-r-2 h-full p-4">
 					<h2 className="text-2xl text-center font-bold">{drinkData?.name}</h2>
 					<img
 						src={drinkData?.image}
-						className="flex-1 min-h-0 min-w-0 m-4 object-cover border-2 object-center rounded-lg max-[500px]:min-h-[150px]"
+						className="flex-1 min-h-0 min-w-0 m-4 max-h-[200px] object-cover border-2 object-center rounded-lg max-[650px]:min-h-[150px]"
 					/>
 					<div className="flex mt-auto">
 						<ul className="w-[200px]">
@@ -60,8 +60,8 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 				</div>
 				<div className="flex-1 flex items-center justify-around h-full flex-col gap-4 p-4">
 					<div className="w-full flex flex-col">
-						<h3 className="underline mr-auto font-semibold">Ingredients</h3>
-						<ul className="flex flex-wrap text-xs">
+						<h3 className="underline mr-auto font-semibold text-lg">Ingredients</h3>
+						<ul className="flex flex-wrap text-base">
 							<li>
 								{drinkData?.ingredients.map((ingredient, idx) => {
 									return ` ${ingredient} ${idx !== drinkData?.ingredients.length - 1 ? '/' : ''}`;
@@ -70,16 +70,16 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 						</ul>
 					</div>
 					<div className="w-full flex flex-col">
-						<h3 className="underline mr-auto font-semibold">Tools</h3>
-						<ul className="flex flex-wrap text-xs">
+						<h3 className="underline mr-auto font-semibold text-lg">Tools</h3>
+						<ul className="flex flex-wrap text-base">
 							{drinkData?.tools.map((tool, idx) => {
 								return ` ${tool} ${idx !== drinkData?.tools.length - 1 ? '/' : ''}`;
 							})}
 						</ul>
 					</div>
 					<div className="w-full flex flex-col">
-						<h3 className="underline font-semibold">Quick steps</h3>
-						<ul className="text-xs">
+						<h3 className="underline font-semibold text-lg">Quick steps</h3>
+						<ul className="text-base">
 							{drinkData?.steps.map((step, idx) => (
 								<li>
 									{idx + 1}. {step}
@@ -94,16 +94,16 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 							</Button>
 						</Dialog.Trigger>
 						<Dialog.Content className="rounded-lg">
-							<div className="h-[80vh] w-[80vw] max-w-[800px] max-h-[800px] bg-white flex max-[800px]:flex-col overflow-y-auto">
-								<div className="relative border-r-2 h-full w-[40%] bg-gray-200 flex justify-center items-center max-[800px]:w-full max-[800px]:h-[300px]">
-									<img src={drinkData?.image} className="h-full object-cover object-center" />
+							<div className="h-[80vh] w-[80vw] max-w-[800px] max-h-[800px] bg-white flex max-[800px]:flex-col max-[800px]:overflow-y-auto">
+								<div className="relative border-r-2 w-full bg-gray-200 flex justify-center items-center max-[800px]:h-[30%] max-[800px]:min-h-[150px]">
+									<img src={drinkData?.image} className="h-full w-full object-cover object-center" />
 									<div className="absolute bottom-1 pb-1 flex justify-around w-full overflow-x-auto">
 										<Card className="border-2 p-2">{drinkData?.liquor}</Card>
 										<Card className="border-2 p-2">{drinkData?.flavour}</Card>
 										<Card className="border-2 p-2">{drinkData?.style}</Card>
 									</div>
 								</div>
-								<div className="w-full h-full overflow-y-auto flex flex-col min-h-[400px]">
+								<div className="min-[800px]:overflow-y-auto w-full flex flex-col">
 									<div className="flex p-2 pl-5 w-full border-b-2">
 										<h2 className="text-2xl font-semibold">{drinkData?.name}</h2>
 										<Dialog.Trigger asChild>
