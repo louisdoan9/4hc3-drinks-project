@@ -12,7 +12,7 @@ export default function DrinksList({
 	tagFilters: string[];
 }) {
 	return (
-		<div className="overflow-y-auto p-4" dir="rtl">
+		<div className="overflow-y-auto p-4 w-full" dir="rtl">
 			<div className="flex gap-8 flex-wrap min-h-0" dir="ltr">
 				{drinksData.map(
 					(drink) =>
@@ -22,7 +22,7 @@ export default function DrinksList({
 							tagFilters.includes(drink.flavour)) && (
 							<Card
 								onClick={() => setSelectedDrink(drink.id)}
-								className="h-[250px] w-[30%] min-w-[150px] relative flex flex-col items-center hover:cursor-pointer"
+								className="h-[250px] w-[30%] min-w-[150px] relative flex flex-col items-center hover:cursor-pointer overflow-hidden"
 							>
 								<img
 									src={drink.image}

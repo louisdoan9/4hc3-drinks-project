@@ -33,15 +33,15 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 
 	return (
 		<>
-			<nav className="flex h-[75px]">
-				<div className="w-[60%] flex justify-around items-center ">
+			<nav className="flex h-[75px] mt-4">
+				<div className="w-[60%] flex justify-around items-center">
 					<Button className="border-2 mr-auto ml-2 p-2" onClick={() => setView('home')}>
 						Home
 					</Button>
 				</div>
 			</nav>
 
-			<section className="h-full flex flex-col min-h-0" key={x}>
+			<section className="h-full flex flex-col min-h-[400px]" key={x}>
 				<div className="flex flex-col min-h-0 h-full px-4 py-4">
 					<h2 className="text-2xl">Drinks</h2>
 					<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
@@ -57,8 +57,8 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 														Edit
 													</Button>
 												</Dialog.Trigger>
-												<Dialog.Content>
-													<Card className="h-fit w-[40vw] bg-white flex flex-col gap-8">
+												<Dialog.Content className="rounded-xl h-fit w-[80%] overflow-auto">
+													<Card className="h-fit w-[80vw] bg-white flex flex-col gap-8">
 														<Card.Content className="p-4 flex flex-col h-full gap-6">
 															<div className="flex flex-col mt-auto">
 																<h2 className="text-2xl">Amount(mL)</h2>
@@ -66,7 +66,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																	<Input
 																		onChange={(e) => setAmount(e.target.value)}
 																		type="number"
-																		className="w-full h-[30px] border-2 p-2"
+																		className="w-full h-[30px] border-2 p-2 rounded-lg"
 																	/>
 																</div>
 															</div>

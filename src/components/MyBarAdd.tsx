@@ -31,8 +31,8 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 					Add Item
 				</Button>
 			</Dialog.Trigger>
-			<Dialog.Content>
-				<Card className="h-fit w-[40vw] bg-white flex flex-col gap-8">
+			<Dialog.Content className="rounded-xl my-4 overflow-auto">
+				<Card className="h-full w-[80vw] bg-white flex flex-col gap-8">
 					<Card.Content className="p-4 flex flex-col h-full gap-6">
 						<div className="flex flex-col gap-2">
 							<h2 className="text-2xl">Type</h2>
@@ -65,7 +65,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 								<h2 className="text-2xl">Name</h2>
 								<div className="flex flex-col h-full">
 									<Select onValueChange={(e) => setSelected(e)} value="filter" defaultValue={'filter'}>
-										<Select.Trigger className="mb-3">
+										<Select.Trigger className="mb-3 rounded-lg">
 											<Select.Value>{selected ?? 'Select'}</Select.Value>
 										</Select.Trigger>
 										<Select.Content>
@@ -112,7 +112,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 										disabled={!type}
 										type="number"
 										value={amount}
-										className="w-full h-[30px] border-2 p-2"
+										className="w-full h-[30px] border-2 p-2 rounded-lg"
 									/>
 								</div>
 							</div>

@@ -16,9 +16,9 @@ export default function Filter({
 	}
 
 	return (
-		<div className="items-center flex pl-4">
+		<div className="flex px-4 min-w-0 flex-1">
 			<Select onValueChange={(e) => addToFilter(e)} value="filter" defaultValue={'filter'}>
-				<Select.Trigger className="mb-3">
+				<Select.Trigger className="mb-3 rounded-lg">
 					<Select.Value>Filter</Select.Value>
 				</Select.Trigger>
 				<Select.Content>
@@ -48,8 +48,8 @@ export default function Filter({
 					</Select.Group>
 				</Select.Content>
 			</Select>
-			<div className="w-full overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-				<div className="flex px-4 gap-2 w-full">
+			<div className="pb-3 flex-1 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+				<div className="flex px-4 gap-2 flex-1 min-w-0">
 					{tagFilters.map((tag) => (
 						<Button
 							className="hover:bg-red-400"
