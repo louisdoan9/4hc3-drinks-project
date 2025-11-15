@@ -30,7 +30,7 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 						className="flex-1 min-h-0 min-w-0 m-4 max-h-[200px] object-cover border-2 object-center rounded-lg max-[850px]:min-h-[150px]"
 					/>
 					<div className="flex">
-						<ul className="w-[200px]">
+						<ul className="flex flex-col justify-center w-full">
 							<li>
 								<div className="flex">
 									<p className="mr-auto underline">Vibe:</p>
