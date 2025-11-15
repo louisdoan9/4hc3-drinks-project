@@ -211,9 +211,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 				</section>
 			)}
 
-			<div className="overflow-hidden w-full pb-2">
-				<MyBarAdd setX={setX} x={x} />
-			</div>
+			<MyBarAdd setX={setX} x={x} />
 		</>
 	);
 }

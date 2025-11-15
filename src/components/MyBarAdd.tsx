@@ -27,7 +27,12 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 			}}
 		>
 			<Dialog.Trigger asChild>
-				<Button className="text-2xl flex justify-center shadow-2xl border-t- w-full">Add Item</Button>
+				<Button
+					variant={'link'}
+					className="text-2xl flex justify-center shadow-2xl border-t-2 bg-amber-300 rounded-b-none"
+				>
+					Add Item
+				</Button>
 			</Dialog.Trigger>
 			<Dialog.Content className="rounded-xl overflow-auto">
 				<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[400px] overflow-y-auto bg-white flex flex-col gap-8">

@@ -21,9 +21,9 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 	}
 
 	return (
-		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-h-[600px] max-[850px]:min-w-0 max-[600px]:max-h-[850px]">
-			<Card.Content className="flex p-0 flex-1 max-[850px]:flex-col">
-				<div className="flex flex-1 min-w-0 min-h-0 flex-col border-r-2 h-full p-4">
+		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-[850px]:min-w-0 max-h-[1000px]">
+			<Card.Content className="flex p-0 flex-1 flex-col">
+				<div className="flex flex-1 min-w-0 min-h-0 flex-col h-full p-4">
 					<h2 className="text-2xl text-center font-bold">{drinkData?.name}</h2>
 					<img
 						src={drinkData?.image}
