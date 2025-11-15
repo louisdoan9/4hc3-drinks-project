@@ -136,6 +136,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 									<Button
 										disabled={!selected || amount === undefined}
 										onClick={() => {
+											return;
 											if (localStorage.getItem('items')) {
 												const prev = JSON.parse(localStorage.getItem('items') ?? '');
 												localStorage.setItem(

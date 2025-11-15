@@ -12,9 +12,10 @@ export default function DrinksList({
 	textFilter: string;
 	tagFilters: string[];
 }) {
-	const filteredDrinks = drinksData.filter(
-		(drink) => drink.name.toLowerCase().includes(textFilter.toLowerCase()) && filterDrinks(drink)
-	);
+	const filteredDrinks = drinksData.filter((drink) => {
+		// return drink.name.toLowerCase().includes(textFilter.toLowerCase()) && filterDrinks(drink)
+		return drink;
+	});
 
 	function filterDrinks(drink: Drink) {
 		if (!tagFilters || tagFilters.length === 0) return true;
