@@ -136,7 +136,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 									item.type === 'ingredient' && (
 										<Card className="max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
 											<div className="flex justify-center border-b-2 px-2">
-												<h2>{item.item}</h2>
+												<h2 className="text-nowrap">{item.item}</h2>
 												<Dialog onOpenChange={() => setAmount(undefined)}>
 													<Dialog.Trigger asChild>
 														<Button variant={'link'} className="ml-auto p-0">
