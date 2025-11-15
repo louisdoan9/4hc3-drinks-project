@@ -41,169 +41,175 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 				</div>
 			</nav>
 
-			<section className="h-full flex flex-col min-h-[400px]" key={x}>
-				<div className="flex flex-col min-h-0 h-full px-4 py-4">
-					<h2 className="text-2xl">Drinks</h2>
-					<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
-						{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
-							(item: item) =>
-								item.type === 'drink' && (
-									<Card className="h-full max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
-										<div className="flex justify-center border-b-2 px-2">
-											<h2>{item.item}</h2>
-											<Dialog onOpenChange={() => setAmount(undefined)}>
-												<Dialog.Trigger asChild>
-													<Button variant={'link'} className="ml-auto p-0">
-														Edit
-													</Button>
-												</Dialog.Trigger>
-												<Dialog.Content className="rounded-xl overflow-auto">
-													<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
-														<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
-															<div className="flex flex-col">
-																<h2 className="text-2xl">Amount(mL)</h2>
-																<div className="flex gap-5">
-																	<Input
-																		onChange={(e) => setAmount(parseInt(e.target.value))}
-																		type="number"
-																		className="w-full h-[30px] border-2 p-2 rounded-lg"
-																	/>
-																</div>
-															</div>
-															<div className="flex justify-around gap-4">
-																<Dialog.Trigger>
-																	<Button variant={'outline'} className="bg-red-400 p-2 px-4">
-																		Cancel
-																	</Button>
-																</Dialog.Trigger>
-																<Dialog.Trigger>
-																	<Button
-																		disabled={amount === undefined}
-																		onClick={() => {
-																			if (localStorage.getItem('items')) {
-																				const items = JSON.parse(localStorage.getItem('items') ?? '');
-																				const updatedItem = {
-																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount && amount >= 0 ? amount : 0,
-																				};
-																				const updatedList = items.map((item: item) => {
-																					if (item.item === updatedItem.item) {
-																						return updatedItem;
-																					}
-																					return item;
-																				});
-																				localStorage.setItem('items', JSON.stringify(updatedList));
-																				setX(x + 1);
-																			}
-																		}}
-																		variant={'outline'}
-																		className={`bg-green-400 p-2 px-4 ${
-																			amount === undefined && 'cursor-not-allowed'
-																		}`}
-																	>
-																		Edit
-																	</Button>
-																</Dialog.Trigger>
-															</div>
-														</Card.Content>
-													</Card>
-												</Dialog.Content>
-											</Dialog>
-										</div>
-										<div className="overflow-hidden flex justify-center items-center flex-1 min-h-0 p-1">
-											<img
-												src={getImages(item.item)}
-												className="object-contain overflow-hidden h-full min-h-0"
-											/>
-										</div>
-										<h3 className="text-center">{item.amount}mL Left</h3>
-									</Card>
-								)
-						)}
-					</div>
+			{JSON.parse(localStorage.getItem('items') ?? '[]').length === 0 ? (
+				<div className="w-full h-full flex justify-center items-center">
+					No items added yet. Press "Add Item" to get started.
 				</div>
+			) : (
+				<section className="h-full flex flex-col min-h-[400px]" key={x}>
+					<div className="flex flex-col min-h-0 h-full px-4 py-4">
+						<h2 className="text-2xl">Drinks</h2>
+						<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
+							{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
+								(item: item) =>
+									item.type === 'drink' && (
+										<Card className="h-full max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
+											<div className="flex justify-center border-b-2 px-2">
+												<h2>{item.item}</h2>
+												<Dialog onOpenChange={() => setAmount(undefined)}>
+													<Dialog.Trigger asChild>
+														<Button variant={'link'} className="ml-auto p-0">
+															Edit
+														</Button>
+													</Dialog.Trigger>
+													<Dialog.Content className="rounded-xl overflow-auto">
+														<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
+															<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
+																<div className="flex flex-col">
+																	<h2 className="text-2xl">Amount(mL)</h2>
+																	<div className="flex gap-5">
+																		<Input
+																			onChange={(e) => setAmount(parseInt(e.target.value))}
+																			type="number"
+																			className="w-full h-[30px] border-2 p-2 rounded-lg"
+																		/>
+																	</div>
+																</div>
+																<div className="flex justify-around gap-4">
+																	<Dialog.Trigger>
+																		<Button variant={'outline'} className="bg-red-400 p-2 px-4">
+																			Cancel
+																		</Button>
+																	</Dialog.Trigger>
+																	<Dialog.Trigger>
+																		<Button
+																			disabled={amount === undefined}
+																			onClick={() => {
+																				if (localStorage.getItem('items')) {
+																					const items = JSON.parse(localStorage.getItem('items') ?? '');
+																					const updatedItem = {
+																						...items.filter((x: item) => x.item === item.item)[0],
+																						amount: amount && amount >= 0 ? amount : 0,
+																					};
+																					const updatedList = items.map((item: item) => {
+																						if (item.item === updatedItem.item) {
+																							return updatedItem;
+																						}
+																						return item;
+																					});
+																					localStorage.setItem('items', JSON.stringify(updatedList));
+																					setX(x + 1);
+																				}
+																			}}
+																			variant={'outline'}
+																			className={`bg-green-400 p-2 px-4 ${
+																				amount === undefined && 'cursor-not-allowed'
+																			}`}
+																		>
+																			Edit
+																		</Button>
+																	</Dialog.Trigger>
+																</div>
+															</Card.Content>
+														</Card>
+													</Dialog.Content>
+												</Dialog>
+											</div>
+											<div className="overflow-hidden flex justify-center items-center flex-1 min-h-0 p-1">
+												<img
+													src={getImages(item.item)}
+													className="object-contain overflow-hidden h-full min-h-0"
+												/>
+											</div>
+											<h3 className="text-center">{item.amount}mL Left</h3>
+										</Card>
+									)
+							)}
+						</div>
+					</div>
 
-				<div className="flex flex-col min-h-0 h-full px-4 py-4">
-					<h2 className="text-2xl">Ingredients</h2>
-					<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
-						{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
-							(item: item) =>
-								item.type === 'ingredient' && (
-									<Card className="max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
-										<div className="flex justify-center border-b-2 px-2">
-											<h2>{item.item}</h2>
-											<Dialog onOpenChange={() => setAmount(undefined)}>
-												<Dialog.Trigger asChild>
-													<Button variant={'link'} className="ml-auto p-0">
-														Edit
-													</Button>
-												</Dialog.Trigger>
-												<Dialog.Content className="rounded-xl overflow-auto">
-													<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
-														<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
-															<div className="flex flex-col mt-auto">
-																<h2 className="text-2xl">Amount(mL)</h2>
-																<div className="flex gap-5">
-																	<Input
-																		onChange={(e) => setAmount(parseInt(e.target.value))}
-																		type="number"
-																		className="w-full h-[30px] border-2 p-2"
-																	/>
+					<div className="flex flex-col min-h-0 h-full px-4 py-4">
+						<h2 className="text-2xl">Ingredients</h2>
+						<div className="h-full flex gap-8 overflow-x-auto p-2 min-h-0 overflow-y-hidden">
+							{JSON.parse(localStorage.getItem('items') ?? '[]')?.map(
+								(item: item) =>
+									item.type === 'ingredient' && (
+										<Card className="max-h-[200px] w-[175px] min-w-[150px] relative flex flex-col pt-1 pb-0">
+											<div className="flex justify-center border-b-2 px-2">
+												<h2>{item.item}</h2>
+												<Dialog onOpenChange={() => setAmount(undefined)}>
+													<Dialog.Trigger asChild>
+														<Button variant={'link'} className="ml-auto p-0">
+															Edit
+														</Button>
+													</Dialog.Trigger>
+													<Dialog.Content className="rounded-xl overflow-auto">
+														<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
+															<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
+																<div className="flex flex-col mt-auto">
+																	<h2 className="text-2xl">Amount(mL)</h2>
+																	<div className="flex gap-5">
+																		<Input
+																			onChange={(e) => setAmount(parseInt(e.target.value))}
+																			type="number"
+																			className="w-full h-[30px] border-2 p-2"
+																		/>
+																	</div>
 																</div>
-															</div>
-															<div className="flex justify-around gap-4">
-																<Dialog.Trigger>
-																	<Button variant={'outline'} className="bg-red-400 p-2 px-4">
-																		Cancel
-																	</Button>
-																</Dialog.Trigger>
-																<Dialog.Trigger>
-																	<Button
-																		disabled={amount === undefined}
-																		onClick={() => {
-																			if (localStorage.getItem('items')) {
-																				const items = JSON.parse(localStorage.getItem('items') ?? '');
-																				const updatedItem = {
-																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount && amount >= 0 ? amount : 0,
-																				};
-																				const updatedList = items.map((item: item) => {
-																					if (item.item === updatedItem.item) {
-																						return updatedItem;
-																					}
-																					return item;
-																				});
-																				localStorage.setItem('items', JSON.stringify(updatedList));
-																				setX(x + 1);
-																			}
-																		}}
-																		variant={'outline'}
-																		className={`bg-green-400 p-2 px-4 ${
-																			amount === undefined && 'cursor-not-allowed'
-																		}`}
-																	>
-																		Edit
-																	</Button>
-																</Dialog.Trigger>
-															</div>
-														</Card.Content>
-													</Card>
-												</Dialog.Content>
-											</Dialog>
-										</div>
-										<div className="overflow-hidden flex justify-center items-center flex-1 min-h-0 p-1">
-											<img
-												src={getImages(item.item)}
-												className="object-contain overflow-hidden h-full min-h-0"
-											/>
-										</div>
-										<h3 className="text-center">{item.amount}g Left</h3>
-									</Card>
-								)
-						)}
+																<div className="flex justify-around gap-4">
+																	<Dialog.Trigger>
+																		<Button variant={'outline'} className="bg-red-400 p-2 px-4">
+																			Cancel
+																		</Button>
+																	</Dialog.Trigger>
+																	<Dialog.Trigger>
+																		<Button
+																			disabled={amount === undefined}
+																			onClick={() => {
+																				if (localStorage.getItem('items')) {
+																					const items = JSON.parse(localStorage.getItem('items') ?? '');
+																					const updatedItem = {
+																						...items.filter((x: item) => x.item === item.item)[0],
+																						amount: amount && amount >= 0 ? amount : 0,
+																					};
+																					const updatedList = items.map((item: item) => {
+																						if (item.item === updatedItem.item) {
+																							return updatedItem;
+																						}
+																						return item;
+																					});
+																					localStorage.setItem('items', JSON.stringify(updatedList));
+																					setX(x + 1);
+																				}
+																			}}
+																			variant={'outline'}
+																			className={`bg-green-400 p-2 px-4 ${
+																				amount === undefined && 'cursor-not-allowed'
+																			}`}
+																		>
+																			Edit
+																		</Button>
+																	</Dialog.Trigger>
+																</div>
+															</Card.Content>
+														</Card>
+													</Dialog.Content>
+												</Dialog>
+											</div>
+											<div className="overflow-hidden flex justify-center items-center flex-1 min-h-0 p-1">
+												<img
+													src={getImages(item.item)}
+													className="object-contain overflow-hidden h-full min-h-0"
+												/>
+											</div>
+											<h3 className="text-center">{item.amount}g Left</h3>
+										</Card>
+									)
+							)}
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 
 			<div className="overflow-hidden w-full pb-2">
 				<MyBarAdd setX={setX} x={x} />

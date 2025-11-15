@@ -410,7 +410,7 @@ export const drinksData: Drink[] = [
 	},
 	{
 		id: 16,
-		name: 'Lavender Lemonade',
+		name: 'Lavender Lemon',
 		liquor: 'Gin',
 		flavour: 'Sweet',
 		rating: 5,
