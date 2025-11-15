@@ -14,7 +14,7 @@ function App() {
 
 	return view === 'home' ? (
 		<main className="flex flex-col h-full">
-			<section className="h-full flex overflow-y-auto max-[500px]:flex-col-reverse">
+			<section className="h-full flex overflow-y-auto max-[600px]:flex-col-reverse">
 				<div className="w-full min-w-0 flex flex-col bg-gray-50">
 					<div className="flex items-center bg-gray-50 p-4">
 						<Input
@@ -27,7 +27,7 @@ function App() {
 
 					<DrinksList setSelectedDrink={setSelectedDrink} textFilter={textFilter} tagFilters={tagFilters} />
 				</div>
-				<div className="w-[80%] p-4 flex justify-center items-center flex-col gap-4 max-[650px]:w-full">
+				<div className="w-[80%] p-4 flex justify-center items-center flex-col gap-4 max-[850px]:w-full">
 					<div className="flex px-0 gap-2 mb-auto w-full justify-around items-center">
 						<Button className="border-2 p-2">Hi, User</Button>
 						<Button className="border-2 p-2" onClick={() => setView('myBar')}>

@@ -15,7 +15,27 @@ export default function DrinksList({
 	function filterDrinks(drink: Drink) {
 		if (!tagFilters || tagFilters.length === 0) return true;
 
-		return tagFilters.every((tag) => drink.liquor === tag || drink.flavour === tag);
+		const availableIngredients = localStorage.getItem('items')
+			? JSON.parse(localStorage.getItem('items') ?? '')?.map((x: { item: string; amount: string }) => x)
+			: [];
+
+		return tagFilters.every((tag) => {
+			if (tag === 'MyBar Ingredients') {
+				return drink.ingredients.every((ing) => {
+					const found = availableIngredients.find((x: { item: string; amount: string }) => x.item === ing);
+					return found && Number(found.amount) > 0;
+				});
+			}
+
+			return (
+				drink.liquor === tag ||
+				drink.flavour === tag ||
+				drink.strength === tag ||
+				drink.colour === tag ||
+				drink.style === tag ||
+				drink.difficulty === tag
+			);
+		});
 	}
 
 	return (

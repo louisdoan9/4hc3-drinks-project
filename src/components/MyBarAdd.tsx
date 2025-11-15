@@ -6,16 +6,16 @@ import { Input } from './retroui/Input';
 import { Select } from './retroui/Select';
 import { ingredients, liquors } from '@/data';
 
-type item = { type: string; item: string; amount: string };
+type item = { type: string; item: string; amount: number };
 
 export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetStateAction<number>> }) {
 	const [type, setType] = useState<string>();
 	const [selected, setSelected] = useState<string>();
-	const [amount, setAmount] = useState<string>();
+	const [amount, setAmount] = useState<number>();
 
 	useEffect(() => {
 		setSelected(undefined);
-		setAmount('');
+		setAmount(undefined);
 	}, [type]);
 
 	return (
@@ -27,9 +27,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 			}}
 		>
 			<Dialog.Trigger asChild>
-				<Button variant={'link'} className="text-2xl flex justify-center shadow-2xl border-t-2 bg-gray-200">
-					Add Item
-				</Button>
+				<Button className="text-2xl flex justify-center shadow-2xl border-t- w-full">Add Item</Button>
 			</Dialog.Trigger>
 			<Dialog.Content className="rounded-xl overflow-auto">
 				<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[400px] overflow-y-auto bg-white flex flex-col gap-8">
@@ -38,7 +36,9 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 							<h2 className="text-2xl">Type</h2>
 							<div className="flex justify-around">
 								<div className="flex justify-center gap-2">
-									<label htmlFor="drink">Drink</label>
+									<label htmlFor="drink" className="text-xl">
+										Drink
+									</label>
 									<input
 										onClick={() => setType('drink')}
 										type="radio"
@@ -48,7 +48,9 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 									/>
 								</div>
 								<div className="flex justify-center gap-2">
-									<label htmlFor="ingredient">Ingredient</label>
+									<label htmlFor="ingredient" className="text-xl">
+										Ingredient
+									</label>
 									<input
 										onClick={() => setType('ingredient')}
 										type="radio"
@@ -108,7 +110,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 								<h2 className="text-2xl">Amount(mL) / Weight(g)</h2>
 								<div className="flex gap-5">
 									<Input
-										onChange={(e) => setAmount(e.target.value)}
+										onChange={(e) => setAmount(parseInt(e.target.value))}
 										disabled={!type}
 										type="number"
 										value={amount}
@@ -133,12 +135,17 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 												const prev = JSON.parse(localStorage.getItem('items') ?? '');
 												localStorage.setItem(
 													'items',
-													JSON.stringify([...prev, { type: type, item: selected, amount: amount }])
+													JSON.stringify([
+														...prev,
+														{ type: type, item: selected, amount: amount && amount > 0 ? amount : 0 },
+													])
 												);
 											} else {
 												localStorage.setItem(
 													'items',
-													JSON.stringify([{ type: type, item: selected, amount: amount }])
+													JSON.stringify([
+														{ type: type, item: selected, amount: amount && amount > 0 ? amount : 0 },
+													])
 												);
 											}
 											setX(x + 1);

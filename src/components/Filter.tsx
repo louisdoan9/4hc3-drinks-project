@@ -21,7 +21,10 @@ export default function Filter({
 				<Select.Trigger className="mb-3 rounded-lg">
 					<Select.Value>Filter</Select.Value>
 				</Select.Trigger>
-				<Select.Content>
+				<Select.Content className="max-h-[400px] overflow-y-auto">
+					<Select.Item className="hover:cursor-pointer" value="MyBar Ingredients">
+						MyBar Ingredients
+					</Select.Item>
 					<Select.Group>
 						<Select.Label className="pl-1 font-bold">Liquor</Select.Label>
 						<Select.Item className="hover:cursor-pointer" value="Vodka">
@@ -46,13 +49,61 @@ export default function Filter({
 							Spicy
 						</Select.Item>
 					</Select.Group>
+					<Select.Group>
+						<Select.Label className="pl-1 font-bold">Strength</Select.Label>
+						<Select.Item className="hover:cursor-pointer" value="Light">
+							Light
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Moderate">
+							Moderate
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Strong">
+							Strong
+						</Select.Item>
+					</Select.Group>
+					<Select.Group>
+						<Select.Label className="pl-1 font-bold">Vibe</Select.Label>
+						<Select.Item className="hover:cursor-pointer" value="Refreshing">
+							Refreshing
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Bold">
+							Bold
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Elegant">
+							Elegant
+						</Select.Item>
+					</Select.Group>
+					<Select.Group>
+						<Select.Label className="pl-1 font-bold">Colour</Select.Label>
+						<Select.Item className="hover:cursor-pointer" value="Clear">
+							Clear
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Vibrant">
+							Vibrant
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Deep">
+							Deep
+						</Select.Item>
+					</Select.Group>
+					<Select.Group>
+						<Select.Label className="pl-1 font-bold">Difficulty</Select.Label>
+						<Select.Item className="hover:cursor-pointer" value="Easy">
+							Easy
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Medium">
+							Medium
+						</Select.Item>
+						<Select.Item className="hover:cursor-pointer" value="Hard">
+							Hard
+						</Select.Item>
+					</Select.Group>
 				</Select.Content>
 			</Select>
 			<div className="pb-3 flex-1 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 				<div className="flex px-4 gap-2 flex-1 min-w-0">
 					{tagFilters.map((tag) => (
 						<Button
-							className="hover:bg-red-400 px-4"
+							className="hover:bg-red-400 px-4 text-nowrap"
 							onClick={() => setTagFilters([...tagFilters].filter((e) => e !== tag))}
 						>
 							{tag}

@@ -5,10 +5,10 @@ import { Card } from './retroui/Card';
 import { Dialog } from './retroui/Dialog';
 import { Input } from './retroui/Input';
 
-type item = { type: string; item: string; amount: string };
+type item = { type: string; item: string; amount: number };
 
 export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<string>> }) {
-	const [amount, setAmount] = useState<string>();
+	const [amount, setAmount] = useState<number>();
 	const [x, setX] = useState(0);
 
 	function getImages(item: string) {
@@ -64,7 +64,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																<h2 className="text-2xl">Amount(mL)</h2>
 																<div className="flex gap-5">
 																	<Input
-																		onChange={(e) => setAmount(e.target.value)}
+																		onChange={(e) => setAmount(parseInt(e.target.value))}
 																		type="number"
 																		className="w-full h-[30px] border-2 p-2 rounded-lg"
 																	/>
@@ -84,7 +84,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
 																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount,
+																					amount: amount && amount > 0 ? amount : 0,
 																				};
 																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
@@ -143,7 +143,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																<h2 className="text-2xl">Amount(mL)</h2>
 																<div className="flex gap-5">
 																	<Input
-																		onChange={(e) => setAmount(e.target.value)}
+																		onChange={(e) => setAmount(parseInt(e.target.value))}
 																		type="number"
 																		className="w-full h-[30px] border-2 p-2"
 																	/>
@@ -163,7 +163,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
 																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount,
+																					amount: amount && amount > 0 ? amount : 0,
 																				};
 																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
@@ -201,7 +201,9 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 				</div>
 			</section>
 
-			<MyBarAdd setX={setX} x={x} />
+			<div className="overflow-hidden w-full pb-2">
+				<MyBarAdd setX={setX} x={x} />
+			</div>
 		</>
 	);
 }

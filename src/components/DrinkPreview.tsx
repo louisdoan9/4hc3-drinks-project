@@ -3,7 +3,7 @@ import { drinksData } from '@/data';
 import { useEffect, useState } from 'react';
 import { type Drink } from '@/data';
 import { Card } from './retroui/Card';
-import { MaximizeIcon } from 'lucide-react';
+import { XCircleIcon } from 'lucide-react';
 import { Button } from './retroui/Button';
 
 export default function DrinkPreview({ selectedDrink }: { selectedDrink: number | undefined }) {
@@ -21,19 +21,19 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 	}
 
 	return (
-		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-h-[400px] max-[650px]:min-w-0 max-[500px]:max-h-[650px]">
-			<Card.Content className="flex p-0 flex-1 max-[650px]:flex-col">
+		<Card className="flex flex-col h-full overflow-y-auto mb-auto pt-0 hover:shadow-md min-w-[425px] max-h-[600px] max-[850px]:min-w-0 max-[600px]:max-h-[850px]">
+			<Card.Content className="flex p-0 flex-1 max-[850px]:flex-col">
 				<div className="flex flex-1 min-w-0 min-h-0 flex-col border-r-2 h-full p-4">
 					<h2 className="text-2xl text-center font-bold">{drinkData?.name}</h2>
 					<img
 						src={drinkData?.image}
-						className="flex-1 min-h-0 min-w-0 m-4 max-h-[200px] object-cover border-2 object-center rounded-lg max-[650px]:min-h-[150px]"
+						className="flex-1 min-h-0 min-w-0 m-4 max-h-[200px] object-cover border-2 object-center rounded-lg max-[850px]:min-h-[150px]"
 					/>
-					<div className="flex mt-auto">
+					<div className="flex">
 						<ul className="w-[200px]">
 							<li>
 								<div className="flex">
-									<p className="mr-auto underline">Style:</p>
+									<p className="mr-auto underline">Vibe:</p>
 									<p>{drinkData?.style}</p>
 								</div>
 							</li>
@@ -51,6 +51,24 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 							</li>
 							<li>
 								<div className="flex">
+									<p className="mr-auto underline">Flavour:</p>
+									<p>{drinkData?.flavour}</p>
+								</div>
+							</li>
+							<li>
+								<div className="flex">
+									<p className="mr-auto underline">Strength:</p>
+									<p>{drinkData?.strength}</p>
+								</div>
+							</li>
+							<li>
+								<div className="flex">
+									<p className="mr-auto underline">Colour:</p>
+									<p>{drinkData?.colour}</p>
+								</div>
+							</li>
+							<li>
+								<div className="flex">
 									<p className="mr-auto underline">Rating:</p>
 									<p>{Array.from({ length: drinkData?.rating ?? 0 }).map(() => '⭐')}</p>
 								</div>
@@ -61,20 +79,18 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 				<div className="flex-1 flex items-center justify-around h-full flex-col gap-4 p-4">
 					<div className="w-full flex flex-col">
 						<h3 className="underline mr-auto font-semibold text-lg">Ingredients</h3>
-						<ul className="flex flex-wrap text-base">
-							<li>
-								{drinkData?.ingredients.map((ingredient, idx) => {
-									return ` ${ingredient} ${idx !== drinkData?.ingredients.length - 1 ? '/' : ''}`;
-								})}
-							</li>
+						<ul className="text-base">
+							{drinkData?.ingredients.map((ingredient) => (
+								<li>{ingredient}</li>
+							))}
 						</ul>
 					</div>
 					<div className="w-full flex flex-col">
 						<h3 className="underline mr-auto font-semibold text-lg">Tools</h3>
-						<ul className="flex flex-wrap text-base">
-							{drinkData?.tools.map((tool, idx) => {
-								return ` ${tool} ${idx !== drinkData?.tools.length - 1 ? '/' : ''}`;
-							})}
+						<ul className="text-base">
+							{drinkData?.tools.map((tool) => (
+								<li>{tool}</li>
+							))}
 						</ul>
 					</div>
 					<div className="w-full flex flex-col">
@@ -107,7 +123,7 @@ export default function DrinkPreview({ selectedDrink }: { selectedDrink: number 
 									<div className="flex p-2 pl-5 w-full border-b-2">
 										<h2 className="text-2xl font-semibold">{drinkData?.name}</h2>
 										<Dialog.Trigger asChild>
-											<MaximizeIcon className="ml-auto my-auto hover:cursor-pointer" />
+											<XCircleIcon className="ml-auto my-auto hover:cursor-pointer" />
 										</Dialog.Trigger>
 									</div>
 
