@@ -129,7 +129,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 								</Dialog.Trigger>
 								<Dialog.Trigger>
 									<Button
-										disabled={!selected || !amount}
+										disabled={!selected || amount === undefined}
 										onClick={() => {
 											if (localStorage.getItem('items')) {
 												const prev = JSON.parse(localStorage.getItem('items') ?? '');
@@ -137,14 +137,14 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 													'items',
 													JSON.stringify([
 														...prev,
-														{ type: type, item: selected, amount: amount && amount > 0 ? amount : 0 },
+														{ type: type, item: selected, amount: amount && amount >= 0 ? amount : 0 },
 													])
 												);
 											} else {
 												localStorage.setItem(
 													'items',
 													JSON.stringify([
-														{ type: type, item: selected, amount: amount && amount > 0 ? amount : 0 },
+														{ type: type, item: selected, amount: amount && amount >= 0 ? amount : 0 },
 													])
 												);
 											}
@@ -152,7 +152,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 										}}
 										variant={'outline'}
 										className={`bg-green-400 p-2 px-4 ${
-											(!selected || !amount) && 'hover:cursor-not-allowed'
+											(!selected || amount === undefined) && 'hover:cursor-not-allowed'
 										}`}
 									>
 										Add

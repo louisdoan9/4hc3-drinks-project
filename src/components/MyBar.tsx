@@ -78,13 +78,13 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																</Dialog.Trigger>
 																<Dialog.Trigger>
 																	<Button
-																		disabled={!amount}
+																		disabled={amount === undefined}
 																		onClick={() => {
 																			if (localStorage.getItem('items')) {
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
 																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount && amount > 0 ? amount : 0,
+																					amount: amount && amount >= 0 ? amount : 0,
 																				};
 																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
@@ -97,7 +97,9 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																			}
 																		}}
 																		variant={'outline'}
-																		className={`bg-green-400 p-2 px-4 ${!amount && 'cursor-not-allowed'}`}
+																		className={`bg-green-400 p-2 px-4 ${
+																			amount === undefined && 'cursor-not-allowed'
+																		}`}
 																	>
 																		Edit
 																	</Button>
@@ -157,13 +159,13 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																</Dialog.Trigger>
 																<Dialog.Trigger>
 																	<Button
-																		disabled={!amount}
+																		disabled={amount === undefined}
 																		onClick={() => {
 																			if (localStorage.getItem('items')) {
 																				const items = JSON.parse(localStorage.getItem('items') ?? '');
 																				const updatedItem = {
 																					...items.filter((x: item) => x.item === item.item)[0],
-																					amount: amount && amount > 0 ? amount : 0,
+																					amount: amount && amount >= 0 ? amount : 0,
 																				};
 																				const updatedList = items.map((item: item) => {
 																					if (item.item === updatedItem.item) {
@@ -176,7 +178,9 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 																			}
 																		}}
 																		variant={'outline'}
-																		className={`bg-green-400 p-2 px-4 ${!amount && 'cursor-not-allowed'}`}
+																		className={`bg-green-400 p-2 px-4 ${
+																			amount === undefined && 'cursor-not-allowed'
+																		}`}
 																	>
 																		Edit
 																	</Button>
