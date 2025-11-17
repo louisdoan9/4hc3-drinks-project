@@ -120,6 +120,7 @@ export default function MyBarAdd({ x, setX }: { x: number; setX: Dispatch<SetSta
 										type="number"
 										value={amount}
 										className="w-full h-[30px] border-2 p-2 rounded-lg"
+										placeholder="Enter Amount (mL/g)"
 									/>
 								</div>
 							</div>
