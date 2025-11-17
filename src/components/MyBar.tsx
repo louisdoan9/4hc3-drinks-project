@@ -147,7 +147,7 @@ export default function MyBar({ setView }: { setView: Dispatch<SetStateAction<st
 														<Card className="h-[80vh] w-[80vw] max-w-[400px] max-h-[200px] overflow-y-auto bg-white flex flex-col gap-8">
 															<Card.Content className="p-4 flex flex-col h-full gap-6 justify-center items-center">
 																<div className="flex flex-col mt-auto">
-																	<h2 className="text-2xl">Amount(mL)</h2>
+																	<h2 className="text-2xl">Amount(g)</h2>
 																	<div className="flex gap-5">
 																		<Input
 																			onChange={(e) => setAmount(parseInt(e.target.value))}
